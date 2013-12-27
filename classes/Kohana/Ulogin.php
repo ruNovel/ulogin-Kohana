@@ -110,12 +110,7 @@ class Kohana_Ulogin {
         
         if (!$ulogin->loaded())
         {
-            if (($orm_user = Auth::instance()->get_user()))
-            {
-                $this->create_ulogin($ulogin, $user);
-            }
-            else
-            {
+           
                 $data['username'] = '';
                 foreach($this->config['username'] as $part_of_name)
                     $data['username'] .= (empty($user[$part_of_name]) ? '' : (' '.$user[$part_of_name]));
@@ -141,7 +136,7 @@ class Kohana_Ulogin {
                 $this->create_ulogin($ulogin, $user);
                 
                 Auth::instance()->force_login($orm_user);
-            }
+            
         }
         else
         {
